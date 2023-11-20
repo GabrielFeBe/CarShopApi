@@ -5,7 +5,9 @@ namespace CarShopApi.Repository
 {
   public class CarShopContext : DbContext, ICarShopContext
   {
-    public DbSet<CarModel> Cars { get; set; }
+    public DbSet<Car> Cars { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Order> Orders { get; set; }
     public CarShopContext(DbContextOptions<CarShopContext> options) : base(options)
     {
     }

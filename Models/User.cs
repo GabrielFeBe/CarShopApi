@@ -1,8 +1,8 @@
 namespace CarShopApi.Models
 {
-  public class UserModel
+  public class User
   {
-    public int Id { get; set; }
+    public int UserId { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public string? Email { get; set; }
@@ -14,6 +14,6 @@ namespace CarShopApi.Models
     public string? ZipCode { get; set; }
     public string? Country { get; set; }
     public string? ImageUrl { get; set; }
-    public List<OrderModel>? Orders { get; set; }
+    public List<Order>? Orders { get; set; }
   }
 }
