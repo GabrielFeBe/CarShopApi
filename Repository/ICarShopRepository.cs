@@ -5,7 +5,7 @@ namespace CarShopApi.Repository
 
   public interface ICarRepository
   {
-    List<CarModel> GetAllCars();
+    List<Car> GetAllCars();
     // CarModel GetCarById(int id);
     // CarModel GetCarByModel(string model);
     // void AddCar(CarModel car);

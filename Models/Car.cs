@@ -1,6 +1,6 @@
 namespace CarShopApi.Models
 {
-  public class CarModel
+  public class Car
   {
     public int CarId { get; set; }
     public string? Make { get; set; }
@@ -15,6 +15,6 @@ namespace CarShopApi.Models
     public string? FuelType { get; set; }
     public string? Description { get; set; }
     public string? ImageUrl { get; set; }
-    public List<OrderModel>? Orders { get; set; }
+    public List<Order>? Orders { get; set; }
   }
 }

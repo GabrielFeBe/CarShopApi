@@ -5,17 +5,17 @@ using CarShopApi.Repository;
 namespace TrybeHotel.Controllers
 {
   [ApiController]
-  [Route("booking")]
-  public class BookingController : Controller
+  [Route("car")]
+  public class CarController : Controller
   {
     private readonly ICarRepository _repository;
-    public BookingController(ICarRepository repository)
+    public CarController(ICarRepository repository)
     {
       _repository = repository;
     }
 
     [HttpGet]
-    public ActionResult<List<CarModel>> GetAllCars()
+    public ActionResult<List<Car>> GetAllCars()
     {
       return _repository.GetAllCars();
     }

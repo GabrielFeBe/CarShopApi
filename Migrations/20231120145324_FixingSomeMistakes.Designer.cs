@@ -2,6 +2,7 @@
 using CarShopApi.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarShopApi.Migrations
 {
     [DbContext(typeof(CarShopContext))]
-    partial class CarShopContextModelSnapshot : ModelSnapshot
+    [Migration("20231120145324_FixingSomeMistakes")]
+    partial class FixingSomeMistakes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

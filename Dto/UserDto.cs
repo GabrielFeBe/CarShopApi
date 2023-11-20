@@ -28,4 +28,10 @@ namespace CarShopApi.Dto
     public string? Country { get; set; }
     public string? ImageUrl { get; set; }
   }
+
+  public class LoginDto
+  {
+    public string Email { get; set; }
+    public string Password { get; set; }
+  }
 }

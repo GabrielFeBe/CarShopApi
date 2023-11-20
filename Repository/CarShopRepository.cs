@@ -10,7 +10,7 @@ namespace CarShopApi.Repository
     {
       _context = context;
     }
-    public List<CarModel> GetAllCars()
+    public List<Car> GetAllCars()
     {
       return _context.Cars.ToList();
     }

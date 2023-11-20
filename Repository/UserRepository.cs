@@ -59,7 +59,36 @@ namespace CarShopApi.Repository
       throw new NotImplementedException();
     }
 
-    public UserDto GetUserByEmail(string email)
+    public UserDto Login(LoginDto user)
+    {
+      var GetUser = GetUserByEmail(user.Email);
+      if (GetUser.Password == user.Password)
+      {
+        return new UserDto
+        {
+          UserId = GetUser.UserId,
+          FirstName = GetUser.FirstName,
+          LastName = GetUser.LastName,
+          Email = GetUser.Email,
+          PhoneNumber = GetUser.PhoneNumber,
+          Address = GetUser.Address,
+          City = GetUser.City,
+          State = GetUser.State,
+          ZipCode = GetUser.ZipCode,
+          Country = GetUser.Country,
+          ImageUrl = GetUser.ImageUrl
+        };
+
+      }
+      else
+      {
+        throw new Exception("Wrong password");
+      }
+
+
+    }
+
+    public User GetUserByEmail(string email)
     {
       var user = _context.Users.FirstOrDefault(u => u.Email == email);
       if (user == null)
@@ -68,20 +97,7 @@ namespace CarShopApi.Repository
       }
       else
       {
-        return new UserDto
-        {
-          UserId = user.UserId,
-          FirstName = user.FirstName,
-          LastName = user.LastName,
-          Email = user.Email,
-          PhoneNumber = user.PhoneNumber,
-          Address = user.Address,
-          City = user.City,
-          State = user.State,
-          ZipCode = user.ZipCode,
-          Country = user.Country,
-          ImageUrl = user.ImageUrl
-        };
+        return user;
       }
 
     }
@@ -150,4 +166,5 @@ namespace CarShopApi.Repository
       }
     }
   }
+
 }
