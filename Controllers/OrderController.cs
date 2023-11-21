@@ -21,7 +21,19 @@ namespace TrybeHotel.Controllers
       var orders = _repository.GetAllOrders();
       return Ok(orders);
     }
-
+    [HttpPost]
+    public ActionResult<OrderDto> AddOrder([FromBody] InsertOrderDto order)
+    {
+      try
+      {
+        var orderCreated = _repository.AddOrder(order);
+        return Ok(orderCreated);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(new { message = e.Message });
+      }
+    }
 
 
   }

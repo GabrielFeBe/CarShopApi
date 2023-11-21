@@ -56,7 +56,17 @@ namespace CarShopApi.Repository
 
     public void DeleteUser(int id)
     {
-      throw new NotImplementedException();
+      var user = _context.Users.FirstOrDefault(u => u.UserId == id);
+      if (user == null)
+      {
+        throw new Exception("User not found");
+      }
+      else
+      {
+        _context.Users.Remove(user);
+        _context.SaveChanges();
+      }
+
     }
 
     public UserDto Login(LoginDto user)

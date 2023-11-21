@@ -9,9 +9,9 @@ namespace CarShopApi.Models
     public int CarId { get; set; }
     [ForeignKey("UserId")]
     public int UserId { get; set; }
-    public string? OrderDate { get; set; }
+    public DateTime OrderDate { get; set; }
     public string? OrderStatus { get; set; }
-    public string? OrderTotal { get; set; }
+    public int OrderTotal { get; set; }
 
     public Car? Car { get; set; }
     public User? User { get; set; }

@@ -1,5 +1,6 @@
 using CarShopApi.Models;
 using CarShopApi.Dto;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarShopApi.Repository
 {
@@ -38,6 +39,9 @@ namespace CarShopApi.Repository
 
     public List<Car> GetAllCars()
     {
+      // if you want to return the cars with their orders, use this:
+      // return _context.Cars.Include(c => c.Orders).ThenInclude(o => o.User).ToList();
+      // but i'll be leaving it returning just the cars for now
       return _context.Cars.ToList();
     }
   }

@@ -45,6 +45,21 @@ namespace TrybeHotel.Controllers
 
     }
 
+    [HttpDelete("/{id}")]
+    public ActionResult DeleteUser(int id)
+    {
+      try
+      {
+        _repository.DeleteUser(id);
+        return NoContent();
+      }
+      catch (Exception e)
+      {
+        return BadRequest(new { message = e.Message });
+      }
+
+    }
+
 
 
   }

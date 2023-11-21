@@ -6,7 +6,7 @@ namespace CarShopApi.Repository
   {
     List<OrderDto> GetAllOrders();
     Order GetOrderById(int id);
-    void AddOrder(Order order);
+    OrderDto AddOrder(InsertOrderDto order);
     void UpdateOrder(Order order);
     void DeleteOrder(Order order);
   }

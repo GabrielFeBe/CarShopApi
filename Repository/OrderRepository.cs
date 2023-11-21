@@ -60,9 +60,56 @@ namespace CarShopApi.Repository
       throw new NotImplementedException();
     }
 
-    public void AddOrder(Order order)
+    public OrderDto AddOrder(InsertOrderDto order)
     {
-      throw new NotImplementedException();
+      var user = _context.Users.FirstOrDefault(u => u.UserId == order.UserId) ?? throw new Exception("User not found");
+      var car = _context.Cars.FirstOrDefault(c => c.CarId == order.CarId) ?? throw new Exception("Car not found");
+      var newOrder = new Order
+      {
+        UserId = order.UserId,
+        CarId = order.CarId,
+        OrderDate = order.OrderDate,
+        OrderStatus = order.OrderStatus,
+        OrderTotal = car.Price,
+      };
+      _context.Orders.Add(newOrder);
+      _context.SaveChanges();
+      return new OrderDto
+      {
+        OrderDate = order.OrderDate,
+        OrderStatus = order.OrderStatus,
+        OrderTotal = car.Price,
+        Car = new CarDto
+        {
+          Make = car.Make,
+          Model = car.Model,
+          Year = car.Year,
+          Price = car.Price,
+          Description = car.Description,
+          BodyStyle = car.BodyStyle,
+          Color = car.Color,
+          Condition = car.Condition,
+          DriveTrain = car.DriveTrain,
+          FuelType = car.FuelType,
+          ImageUrl = car.ImageUrl,
+          Transmission = car.Transmission
+        },
+        User = new UserDto
+        {
+          FirstName = user.FirstName,
+          LastName = user.LastName,
+          Email = user.Email,
+          PhoneNumber = user.PhoneNumber,
+          Address = user.Address,
+          City = user.City,
+          State = user.State,
+          ZipCode = user.ZipCode,
+          Country = user.Country,
+          ImageUrl = user.ImageUrl,
+          UserId = user.UserId
+        }
+      };
+
     }
 
     public void UpdateOrder(Order order)
